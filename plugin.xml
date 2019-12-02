@@ -38,6 +38,9 @@ xmlns:android="http://schemas.android.com/apk/res/android"
             <pods>
                 <pod name="Firebase/Core" spec="~> 6.7" />
             </pods>
+            <info>
+            Pods Successfully loaded
+            </info>
         </podspec>
 
     </platform>
