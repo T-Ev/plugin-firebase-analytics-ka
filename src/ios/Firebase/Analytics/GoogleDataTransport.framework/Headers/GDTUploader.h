@@ -16,16 +16,16 @@
 
 #import <Foundation/Foundation.h>
 
-#import <GoogleDataTransport/GDTCORClock.h>
-#import <GoogleDataTransport/GDTCORLifecycle.h>
-#import <GoogleDataTransport/GDTCORPrioritizer.h>
-#import <GoogleDataTransport/GDTCORTargets.h>
-#import <GoogleDataTransport/GDTCORUploadPackage.h>
+#import <GoogleDataTransport/GDTClock.h>
+#import <GoogleDataTransport/GDTLifecycle.h>
+#import <GoogleDataTransport/GDTPrioritizer.h>
+#import <GoogleDataTransport/GDTTargets.h>
+#import <GoogleDataTransport/GDTUploadPackage.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 /** This protocol defines the common interface for uploader implementations. */
-@protocol GDTCORUploader <NSObject, GDTCORLifecycleProtocol, GDTCORUploadPackageProtocol>
+@protocol GDTUploader <NSObject, GDTLifecycleProtocol, GDTUploadPackageProtocol>
 
 @required
 
@@ -34,13 +34,13 @@ NS_ASSUME_NONNULL_BEGIN
  * @param conditions The conditions that the upload attempt is likely to occur under.
  * @return YES if the uploader can make an upload attempt, NO otherwise.
  */
-- (BOOL)readyToUploadWithConditions:(GDTCORUploadConditions)conditions;
+- (BOOL)readyToUploadWithConditions:(GDTUploadConditions)conditions;
 
 /** Uploads events to the backend using this specific backend's chosen format.
  *
  * @param package The event package to upload. Make sure to call -completeDelivery.
  */
-- (void)uploadPackage:(GDTCORUploadPackage *)package;
+- (void)uploadPackage:(GDTUploadPackage *)package;
 
 @end
 

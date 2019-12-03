@@ -16,14 +16,14 @@
 
 #import <Foundation/Foundation.h>
 
-#import <GoogleDataTransport/GDTCORTargets.h>
+#import <GoogleDataTransport/GDTTargets.h>
 
-@class GDTCORClock;
-@class GDTCORStoredEvent;
-@class GDTCORUploadPackage;
+@class GDTClock;
+@class GDTStoredEvent;
+@class GDTUploadPackage;
 
 /** A protocol that allows a handler to respond to package lifecycle events. */
-@protocol GDTCORUploadPackageProtocol <NSObject>
+@protocol GDTUploadPackageProtocol <NSObject>
 
 @optional
 
@@ -33,37 +33,37 @@
  *
  * @param package The package that has expired.
  */
-- (void)packageExpired:(GDTCORUploadPackage *)package;
+- (void)packageExpired:(GDTUploadPackage *)package;
 
 /** Indicates that the package was successfully delivered.
  *
  * @param package The package that was delivered.
  */
-- (void)packageDelivered:(GDTCORUploadPackage *)package successful:(BOOL)successful;
+- (void)packageDelivered:(GDTUploadPackage *)package successful:(BOOL)successful;
 
 @end
 
 /** This class is a container that's handed off to uploaders. */
-@interface GDTCORUploadPackage : NSObject <NSSecureCoding>
+@interface GDTUploadPackage : NSObject <NSSecureCoding>
 
 /** The set of stored events in this upload package. */
-@property(nonatomic) NSSet<GDTCORStoredEvent *> *events;
+@property(nonatomic) NSSet<GDTStoredEvent *> *events;
 
-/** The expiration time. If [[GDTCORClock snapshot] isAfter:deliverByTime] this package has expired.
+/** The expiration time. If [[GDTClock snapshot] isAfter:deliverByTime] this package has expired.
  *
  * @note By default, the expiration time will be 3 minutes from creation.
  */
-@property(nonatomic) GDTCORClock *deliverByTime;
+@property(nonatomic) GDTClock *deliverByTime;
 
 /** The target of this package. */
-@property(nonatomic, readonly) GDTCORTarget target;
+@property(nonatomic, readonly) GDTTarget target;
 
 /** Initializes a package instance.
  *
  * @param target The target/destination of this package.
  * @return An instance of this class.
  */
-- (instancetype)initWithTarget:(GDTCORTarget)target NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithTarget:(GDTTarget)target NS_DESIGNATED_INITIALIZER;
 
 // Please use the designated initializer.
 - (instancetype)init NS_UNAVAILABLE;

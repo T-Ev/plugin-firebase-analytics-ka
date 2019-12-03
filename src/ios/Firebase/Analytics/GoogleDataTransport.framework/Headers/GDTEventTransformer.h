@@ -16,12 +16,12 @@
 
 #import <Foundation/Foundation.h>
 
-@class GDTCOREvent;
+@class GDTEvent;
 
 NS_ASSUME_NONNULL_BEGIN
 
 /** Defines the API that event transformers must adopt. */
-@protocol GDTCOREventTransformer <NSObject>
+@protocol GDTEventTransformer <NSObject>
 
 @required
 
@@ -31,7 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
  * @param event The event to transform.
  * @return A transformed event, or nil if the transformation dropped the event.
  */
-- (nullable GDTCOREvent *)transform:(GDTCOREvent *)event;
+- (GDTEvent *)transform:(GDTEvent *)event;
 
 @end
 

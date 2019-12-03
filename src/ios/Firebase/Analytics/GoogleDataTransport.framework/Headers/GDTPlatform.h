@@ -26,65 +26,61 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /** A notification sent out if the app is backgrounding. */
-FOUNDATION_EXPORT NSString *const kGDTCORApplicationDidEnterBackgroundNotification;
+FOUNDATION_EXPORT NSString *const kGDTApplicationDidEnterBackgroundNotification;
 
 /** A notification sent out if the app is foregrounding. */
-FOUNDATION_EXPORT NSString *const kGDTCORApplicationWillEnterForegroundNotification;
+FOUNDATION_EXPORT NSString *const kGDTApplicationWillEnterForegroundNotification;
 
 /** A notification sent out if the app is terminating. */
-FOUNDATION_EXPORT NSString *const kGDTCORApplicationWillTerminateNotification;
+FOUNDATION_EXPORT NSString *const kGDTApplicationWillTerminateNotification;
 
 /** Compares flags with the WWAN reachability flag, if available, and returns YES if present.
  *
  * @param flags The set of reachability flags.
  * @return YES if the WWAN flag is set, NO otherwise.
  */
-BOOL GDTCORReachabilityFlagsContainWWAN(SCNetworkReachabilityFlags flags);
+BOOL GDTReachabilityFlagsContainWWAN(SCNetworkReachabilityFlags flags);
 
 /** A typedef identify background identifiers. */
-typedef volatile NSUInteger GDTCORBackgroundIdentifier;
+typedef volatile NSUInteger GDTBackgroundIdentifier;
 
 /** A background task's invalid sentinel value. */
-FOUNDATION_EXPORT const GDTCORBackgroundIdentifier GDTCORBackgroundIdentifierInvalid;
+FOUNDATION_EXPORT const GDTBackgroundIdentifier GDTBackgroundIdentifierInvalid;
 
 #if TARGET_OS_IOS || TARGET_OS_TV
 /** A protocol that wraps UIApplicationDelegate or NSObject protocol, depending on the platform. */
-@protocol GDTCORApplicationDelegate <UIApplicationDelegate>
+@protocol GDTApplicationDelegate <UIApplicationDelegate>
 #elif TARGET_OS_OSX
-@protocol GDTCORApplicationDelegate <NSApplicationDelegate>
+@protocol GDTApplicationDelegate <NSApplicationDelegate>
 #else
-@protocol GDTCORApplicationDelegate <NSObject>
+@protocol GDTApplicationDelegate <NSObject>
 #endif  // TARGET_OS_IOS || TARGET_OS_TV
 
 @end
 
 /** A cross-platform application class. */
-@interface GDTCORApplication : NSObject <GDTCORApplicationDelegate>
-
-/** Flag to determine if the application is running in the background. */
-@property(atomic, readonly) BOOL isRunningInBackground;
+@interface GDTApplication : NSObject <GDTApplicationDelegate>
 
 /** Creates and/or returns the shared application instance.
  *
  * @return The shared application instance.
  */
-+ (nullable GDTCORApplication *)sharedApplication;
++ (nullable GDTApplication *)sharedApplication;
 
 /** Creates a background task with the returned identifier if on a suitable platform.
  *
- * @name name The name of the task, useful for debugging which background tasks are running.
  * @param handler The handler block that is called if the background task expires.
- * @return An identifier for the background task, or GDTCORBackgroundIdentifierInvalid if one
- * couldn't be created.
+ * @return An identifier for the background task, or GDTBackgroundIdentifierInvalid if one couldn't
+ * be created.
  */
-- (GDTCORBackgroundIdentifier)beginBackgroundTaskWithName:(NSString *)name
-                                        expirationHandler:(void (^__nullable)(void))handler;
+- (GDTBackgroundIdentifier)beginBackgroundTaskWithExpirationHandler:
+    (void (^__nullable)(void))handler;
 
 /** Ends the background task if the identifier is valid.
  *
  * @param bgID The background task to end.
  */
-- (void)endBackgroundTask:(GDTCORBackgroundIdentifier)bgID;
+- (void)endBackgroundTask:(GDTBackgroundIdentifier)bgID;
 
 @end
 

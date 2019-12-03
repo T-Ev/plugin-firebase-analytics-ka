@@ -19,7 +19,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /** This class manages the device clock and produces snapshots of the current time. */
-@interface GDTCORClock : NSObject <NSSecureCoding>
+@interface GDTClock : NSObject <NSSecureCoding>
 
 /** The wallclock time, UTC, in milliseconds. */
 @property(nonatomic, readonly) int64_t timeMillis;
@@ -33,13 +33,13 @@ NS_ASSUME_NONNULL_BEGIN
 /** The device uptime when this clock was created. */
 @property(nonatomic, readonly) int64_t uptime;
 
-/** Creates a GDTCORClock object using the current time and offsets.
+/** Creates a GDTClock object using the current time and offsets.
  *
- * @return A new GDTCORClock object representing the current time state.
+ * @return A new GDTClock object representing the current time state.
  */
 + (instancetype)snapshot;
 
-/** Creates a GDTCORClock object representing a time in the future, relative to now.
+/** Creates a GDTClock object representing a time in the future, relative to now.
  *
  * @param millisInTheFuture The millis in the future from now this clock should represent.
  * @return An instance representing a future time.
@@ -50,7 +50,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  * @return YES if the calling clock's time is after the given clock's time.
  */
-- (BOOL)isAfter:(GDTCORClock *)otherClock;
+- (BOOL)isAfter:(GDTClock *)otherClock;
 
 @end
 

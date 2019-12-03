@@ -16,39 +16,39 @@
 
 #import <Foundation/Foundation.h>
 
-#import <GoogleDataTransport/GDTCORLifecycle.h>
-#import <GoogleDataTransport/GDTCORUploadPackage.h>
+#import <GoogleDataTransport/GDTLifecycle.h>
+#import <GoogleDataTransport/GDTUploadPackage.h>
 
-@class GDTCORStoredEvent;
+@class GDTStoredEvent;
 
 NS_ASSUME_NONNULL_BEGIN
 
 /** Options that define a set of upload conditions. This is used to help minimize end user data
  * consumption impact.
  */
-typedef NS_OPTIONS(NSInteger, GDTCORUploadConditions) {
+typedef NS_OPTIONS(NSInteger, GDTUploadConditions) {
 
   /** An upload shouldn't be attempted, because there's no network. */
-  GDTCORUploadConditionNoNetwork = 1 << 0,
+  GDTUploadConditionNoNetwork = 1 << 0,
 
   /** An upload would likely use mobile data. */
-  GDTCORUploadConditionMobileData = 1 << 1,
+  GDTUploadConditionMobileData = 1 << 1,
 
   /** An upload would likely use wifi data. */
-  GDTCORUploadConditionWifiData = 1 << 2,
+  GDTUploadConditionWifiData = 1 << 2,
 
   /** An upload uses some sort of network connection, but it's unclear which. */
-  GDTCORUploadConditionUnclearConnection = 1 << 3,
+  GDTUploadConditionUnclearConnection = 1 << 3,
 
   /** A high priority event has occurred. */
-  GDTCORUploadConditionHighPriority = 1 << 4,
+  GDTUploadConditionHighPriority = 1 << 4,
 };
 
 /** This protocol defines the common interface of event prioritization. Prioritizers are
  * stateful objects that prioritize events upon insertion into storage and remain prepared to return
  * a set of filenames to the storage system.
  */
-@protocol GDTCORPrioritizer <NSObject, GDTCORLifecycleProtocol, GDTCORUploadPackageProtocol>
+@protocol GDTPrioritizer <NSObject, GDTLifecycleProtocol, GDTUploadPackageProtocol>
 
 @required
 
@@ -58,7 +58,7 @@ typedef NS_OPTIONS(NSInteger, GDTCORUploadConditions) {
  *
  * @param event The event to prioritize.
  */
-- (void)prioritizeEvent:(GDTCORStoredEvent *)event;
+- (void)prioritizeEvent:(GDTStoredEvent *)event;
 
 /** Returns a set of events to upload given a set of conditions.
  *
@@ -66,7 +66,7 @@ typedef NS_OPTIONS(NSInteger, GDTCORUploadConditions) {
  * @return An object to be used by the uploader to determine file URLs to upload with respect to the
  * current conditions.
  */
-- (GDTCORUploadPackage *)uploadPackageWithConditions:(GDTCORUploadConditions)conditions;
+- (GDTUploadPackage *)uploadPackageWithConditions:(GDTUploadConditions)conditions;
 
 @end
 

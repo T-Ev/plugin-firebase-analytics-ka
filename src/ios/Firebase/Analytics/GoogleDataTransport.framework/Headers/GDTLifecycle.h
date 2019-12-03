@@ -16,36 +16,36 @@
 
 #import <Foundation/Foundation.h>
 
-#import <GoogleDataTransport/GDTCORPlatform.h>
+#import <GoogleDataTransport/GDTPlatform.h>
 
-@class GDTCOREvent;
+@class GDTEvent;
 
 NS_ASSUME_NONNULL_BEGIN
 
 /** A protocol defining the lifecycle events objects in the library must respond to immediately. */
-@protocol GDTCORLifecycleProtocol <NSObject>
+@protocol GDTLifecycleProtocol <NSObject>
 
 @optional
 
 /** Indicates an imminent app termination in the rare occurrence when -applicationWillTerminate: has
  * been called.
  *
- * @param app The GDTCORApplication instance.
+ * @param app The GDTApplication instance.
  */
-- (void)appWillTerminate:(GDTCORApplication *)app;
+- (void)appWillTerminate:(GDTApplication *)app;
 
 /** Indicates that the app is moving to background and eventual suspension or the current UIScene is
  * deactivating.
  *
- * @param app The GDTCORApplication instance.
+ * @param app The GDTApplication instance.
  */
-- (void)appWillBackground:(GDTCORApplication *)app;
+- (void)appWillBackground:(GDTApplication *)app;
 
 /** Indicates that the app is resuming operation or a UIScene is activating.
  *
- * @param app The GDTCORApplication instance.
+ * @param app The GDTApplication instance.
  */
-- (void)appWillForeground:(GDTCORApplication *)app;
+- (void)appWillForeground:(GDTApplication *)app;
 
 @end
 
@@ -53,10 +53,10 @@ NS_ASSUME_NONNULL_BEGIN
  *
  * When backgrounding, the library doesn't stop processing events, it's just that several background
  * tasks will end up being created for every event that's sent, and the stateful objects of the
- * library (GDTCORStorage and GDTCORUploadCoordinator singletons) will deserialize themselves from
- * and to disk before and after every operation, respectively.
+ * library (GDTStorage and GDTUploadCoordinator singletons) will deserialize themselves from and to
+ * disk before and after every operation, respectively.
  */
-@interface GDTCORLifecycle : NSObject <GDTCORApplicationDelegate>
+@interface GDTLifecycle : NSObject <GDTApplicationDelegate>
 
 @end
 

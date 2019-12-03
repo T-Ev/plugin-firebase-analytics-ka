@@ -15,17 +15,17 @@
  */
 #import <Foundation/Foundation.h>
 
-#import <GoogleDataTransport/GDTCORDataFuture.h>
-#import <GoogleDataTransport/GDTCOREvent.h>
+#import <GoogleDataTransport/GDTDataFuture.h>
+#import <GoogleDataTransport/GDTEvent.h>
 
-@class GDTCOREvent;
+@class GDTEvent;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface GDTCORStoredEvent : NSObject <NSSecureCoding>
+@interface GDTStoredEvent : NSObject <NSSecureCoding>
 
 /** The data future representing the original event's transport bytes. */
-@property(readonly, nonatomic) GDTCORDataFuture *dataFuture;
+@property(readonly, nonatomic) GDTDataFuture *dataFuture;
 
 /** The mapping identifier, to allow backends to map the transport bytes to a proto. */
 @property(readonly, nonatomic) NSString *mappingID;
@@ -34,10 +34,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property(readonly, nonatomic) NSNumber *target;
 
 /** The quality of service tier this event belongs to. */
-@property(readonly, nonatomic) GDTCOREventQoS qosTier;
+@property(readonly, nonatomic) GDTEventQoS qosTier;
 
 /** The clock snapshot at the time of the event. */
-@property(readonly, nonatomic) GDTCORClock *clockSnapshot;
+@property(readonly, nonatomic) GDTClock *clockSnapshot;
 
 /** A dictionary provided to aid prioritizers by allowing the passing of arbitrary data.
  *
@@ -51,7 +51,7 @@ NS_ASSUME_NONNULL_BEGIN
  * @param dataFuture The dataFuture this event represents.
  * @return An instance of this class.
  */
-- (instancetype)initWithEvent:(GDTCOREvent *)event dataFuture:(GDTCORDataFuture *)dataFuture;
+- (instancetype)initWithEvent:(GDTEvent *)event dataFuture:(GDTDataFuture *)dataFuture;
 
 @end
 

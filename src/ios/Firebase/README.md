@@ -105,7 +105,7 @@ NOTE: If you are upgrading FirebaseAnalytics from before Firebase 5.5.0,
 ## Firestore (~> Analytics)
 - BoringSSL-GRPC.framework
 - FirebaseFirestore.framework
-- abseil.framework
+- Protobuf.framework
 - gRPC-C++.framework
 - gRPC-Core.framework
 - leveldb-library.framework
@@ -141,10 +141,7 @@ directory into your target's main bundle.
 - FirebaseMLCommon.framework
 - FirebaseMLModelInterpreter.framework
 - GTMSessionFetcher.framework
-- GoogleToolboxForMac.framework
-- Protobuf.framework
-- TensorFlowLiteC.framework
-- TensorFlowLiteObjC.framework
+- tensorflow_lite.framework
 
 ## MLNaturalLanguage (~> Analytics)
 - FirebaseMLCommon.framework
@@ -191,6 +188,7 @@ directory into your target's main bundle.
 - FirebaseMLVision.framework
 - GTMSessionFetcher.framework
 - GoogleAPIClientForREST.framework
+- GoogleMobileVision.framework
 - GoogleToolboxForMac.framework
 - Protobuf.framework
 
@@ -200,10 +198,10 @@ directory into your target's main bundle.
 - FirebaseMLVisionAutoML.framework
 - GTMSessionFetcher.framework
 - GoogleAPIClientForREST.framework
+- GoogleMobileVision.framework
 - GoogleToolboxForMac.framework
 - Protobuf.framework
-- TensorFlowLiteC.framework
-- TensorFlowLiteObjC.framework
+- tensorflow_lite.framework
 
 ## MLVisionObjectDetection (~> Analytics)
 - FirebaseMLCommon.framework
@@ -211,38 +209,31 @@ directory into your target's main bundle.
 - FirebaseMLVisionObjectDetection.framework
 - GTMSessionFetcher.framework
 - GoogleAPIClientForREST.framework
+- GoogleMobileVision.framework
 - GoogleToolboxForMac.framework
 - Protobuf.framework
 
 ## MLVisionBarcodeModel (~> Analytics)
-- FirebaseMLCommon.framework
-- FirebaseMLVision.framework
+- BarcodeDetector.framework
 - FirebaseMLVisionBarcodeModel.framework
-- GoogleAPIClientForREST.framework
 - GoogleToolboxForMac.framework
 
 ## MLVisionFaceModel (~> Analytics)
-- FirebaseMLCommon.framework
-- FirebaseMLVision.framework
+- FaceDetector.framework
 - FirebaseMLVisionFaceModel.framework
-- GoogleAPIClientForREST.framework
 - GoogleToolboxForMac.framework
 
 You'll also need to add the resources in the Resources
 directory into your target's main bundle.
 ## MLVisionLabelModel (~> Analytics)
-- FirebaseMLCommon.framework
-- FirebaseMLVision.framework
 - FirebaseMLVisionLabelModel.framework
-- GoogleAPIClientForREST.framework
 - GoogleToolboxForMac.framework
+- LabelDetector.framework
 
 ## MLVisionTextModel (~> Analytics)
-- FirebaseMLCommon.framework
-- FirebaseMLVision.framework
 - FirebaseMLVisionTextModel.framework
-- GoogleAPIClientForREST.framework
 - GoogleToolboxForMac.framework
+- TextDetector.framework
 
 You'll also need to add the resources in the Resources
 directory into your target's main bundle.
@@ -283,55 +274,54 @@ CocoaPods.
 --------------------------------|---------
 AppAuth                         | 1.2.0
 BoringSSL-GRPC                  | 0.0.3
-Firebase                        | 6.13.0
-FirebaseABTesting               | 3.1.2
-FirebaseAnalytics               | 6.1.6
+Firebase                        | 6.7.0
+FirebaseABTesting               | 3.1.0
+FirebaseAnalytics               | 6.1.1
 FirebaseAnalyticsInterop        | 1.4.0
-FirebaseAuth                    | 6.4.0
+FirebaseAuth                    | 6.2.3
 FirebaseAuthInterop             | 1.0.0
-FirebaseCore                    | 6.4.0
-FirebaseCoreDiagnostics         | 1.1.1
-FirebaseCoreDiagnosticsInterop  | 1.1.0
-FirebaseDatabase                | 6.1.2
-FirebaseDynamicLinks            | 4.0.5
-FirebaseFirestore               | 1.8.0
+FirebaseCore                    | 6.2.1
+FirebaseCoreDiagnostics         | 1.0.1
+FirebaseCoreDiagnosticsInterop  | 1.0.0
+FirebaseDatabase                | 6.1.0
+FirebaseDynamicLinks            | 4.0.3
+FirebaseFirestore               | 1.4.4
 FirebaseFunctions               | 2.5.1
-FirebaseInAppMessaging          | 0.15.5
-FirebaseInAppMessagingDisplay   | 0.15.5
-FirebaseInstanceID              | 4.2.7
-FirebaseMLCommon                | 0.19.0
-FirebaseMLModelInterpreter      | 0.19.0
-FirebaseMLNLLanguageID          | 0.17.0
-FirebaseMLNLSmartReply          | 0.17.0
-FirebaseMLNLTranslate           | 0.17.0
-FirebaseMLNaturalLanguage       | 0.17.0
-FirebaseMLVision                | 0.19.0
-FirebaseMLVisionAutoML          | 0.19.0
-FirebaseMLVisionBarcodeModel    | 0.19.0
-FirebaseMLVisionFaceModel       | 0.19.0
-FirebaseMLVisionLabelModel      | 0.19.0
-FirebaseMLVisionObjectDetection | 0.19.0
-FirebaseMLVisionTextModel       | 0.19.0
-FirebaseMessaging               | 4.1.9
-FirebasePerformance             | 3.1.7
-FirebaseRemoteConfig            | 4.4.5
-FirebaseStorage                 | 3.4.2
+FirebaseInAppMessaging          | 0.15.3
+FirebaseInAppMessagingDisplay   | 0.15.4
+FirebaseInstanceID              | 4.2.3
+FirebaseMLCommon                | 0.17.0
+FirebaseMLModelInterpreter      | 0.17.0
+FirebaseMLNLLanguageID          | 0.16.3
+FirebaseMLNLSmartReply          | 0.16.3
+FirebaseMLNLTranslate           | 0.16.3
+FirebaseMLNaturalLanguage       | 0.16.3
+FirebaseMLVision                | 0.17.0
+FirebaseMLVisionAutoML          | 0.17.0
+FirebaseMLVisionBarcodeModel    | 0.17.0
+FirebaseMLVisionFaceModel       | 0.17.0
+FirebaseMLVisionLabelModel      | 0.17.0
+FirebaseMLVisionObjectDetection | 0.17.0
+FirebaseMLVisionTextModel       | 0.17.0
+FirebaseMessaging               | 4.1.3
+FirebasePerformance             | 3.1.2
+FirebaseRemoteConfig            | 4.3.0
+FirebaseStorage                 | 3.4.0
 GTMAppAuth                      | 1.0.0
-GTMSessionFetcher               | 1.3.0
-Google-Mobile-Ads-SDK           | 7.52.0
-GoogleAPIClientForREST          | 1.3.10
-GoogleAppMeasurement            | 6.1.6
-GoogleDataTransport             | 3.1.0
-GoogleDataTransportCCTSupport   | 1.2.1
-GoogleSignIn                    | 5.0.2
-GoogleToolboxForMac             | 2.2.2
-GoogleUtilities                 | 6.3.2
-Protobuf                        | 3.10.0
-TensorFlowLiteC                 | 1.14.0
-TensorFlowLiteObjC              | 1.14.0
-abseil                          | 0.20190808
+GTMSessionFetcher               | 1.2.2
+Google-Mobile-Ads-SDK           | 7.48.0
+GoogleAPIClientForREST          | 1.3.9
+GoogleAppMeasurement            | 6.1.1
+GoogleDataTransport             | 1.1.2
+GoogleDataTransportCCTSupport   | 1.0.2
+GoogleMobileVision              | 1.6.0
+GoogleSignIn                    | 5.0.0
+GoogleToolboxForMac             | 2.2.1
+GoogleUtilities                 | 6.2.5
+Protobuf                        | 3.9.0
+TensorFlowLite                  | 1.13.1
 gRPC-C++                        | 0.0.9
 gRPC-Core                       | 1.21.0
-leveldb-library                 | 1.22
-nanopb                          | 0.3.9011
+leveldb-library                 | 1.20
+nanopb                          | 0.3.901
 

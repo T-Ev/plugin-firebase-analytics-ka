@@ -16,13 +16,13 @@
 
 #import <Foundation/Foundation.h>
 
-#import <GoogleDataTransport/GDTCOREventTransformer.h>
+#import <GoogleDataTransport/GDTEventTransformer.h>
 
-@class GDTCOREvent;
+@class GDTEvent;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface GDTCORTransport : NSObject
+@interface GDTTransport : NSObject
 
 // Please use the designated initializer.
 - (instancetype)init NS_UNAVAILABLE;
@@ -35,10 +35,9 @@ NS_ASSUME_NONNULL_BEGIN
  * @param target The target backend of this transport.
  * @return A transport that will send events.
  */
-- (nullable instancetype)initWithMappingID:(NSString *)mappingID
-                              transformers:
-                                  (nullable NSArray<id<GDTCOREventTransformer>> *)transformers
-                                    target:(NSInteger)target NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithMappingID:(NSString *)mappingID
+                     transformers:(nullable NSArray<id<GDTEventTransformer>> *)transformers
+                           target:(NSInteger)target NS_DESIGNATED_INITIALIZER;
 
 /** Copies and sends an internal telemetry event. Events sent using this API are lower in priority,
  * and sometimes won't be sent on their own.
@@ -47,7 +46,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  * @param event The event to send.
  */
-- (void)sendTelemetryEvent:(GDTCOREvent *)event;
+- (void)sendTelemetryEvent:(GDTEvent *)event;
 
 /** Copies and sends an SDK service data event. Events send using this API are higher in priority,
  * and will cause a network request at some point in the relative near future.
@@ -56,13 +55,13 @@ NS_ASSUME_NONNULL_BEGIN
  *
  * @param event The event to send.
  */
-- (void)sendDataEvent:(GDTCOREvent *)event;
+- (void)sendDataEvent:(GDTEvent *)event;
 
 /** Creates an event for use by this transport.
  *
  * @return An event that is suited for use by this transport.
  */
-- (GDTCOREvent *)eventForTransport;
+- (GDTEvent *)eventForTransport;
 
 @end
 

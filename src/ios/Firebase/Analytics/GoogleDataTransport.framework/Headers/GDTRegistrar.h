@@ -16,14 +16,14 @@
 
 #import <Foundation/Foundation.h>
 
-#import <GoogleDataTransport/GDTCORPrioritizer.h>
-#import <GoogleDataTransport/GDTCORTargets.h>
-#import <GoogleDataTransport/GDTCORUploader.h>
+#import <GoogleDataTransport/GDTPrioritizer.h>
+#import <GoogleDataTransport/GDTTargets.h>
+#import <GoogleDataTransport/GDTUploader.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 /** Manages the registration of targets with the transport SDK. */
-@interface GDTCORRegistrar : NSObject <GDTCORLifecycleProtocol>
+@interface GDTRegistrar : NSObject <GDTLifecycleProtocol>
 
 /** Creates and/or returns the singleton instance.
  *
@@ -36,14 +36,14 @@ NS_ASSUME_NONNULL_BEGIN
  * @param backend The backend object to register.
  * @param target The target this backend object will be responsible for.
  */
-- (void)registerUploader:(id<GDTCORUploader>)backend target:(GDTCORTarget)target;
+- (void)registerUploader:(id<GDTUploader>)backend target:(GDTTarget)target;
 
 /** Registers a event prioritizer implementation with the GoogleDataTransport infrastructure.
  *
  * @param prioritizer The prioritizer object to register.
  * @param target The target this prioritizer object will be responsible for.
  */
-- (void)registerPrioritizer:(id<GDTCORPrioritizer>)prioritizer target:(GDTCORTarget)target;
+- (void)registerPrioritizer:(id<GDTPrioritizer>)prioritizer target:(GDTTarget)target;
 
 @end
 
