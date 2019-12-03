@@ -30,20 +30,21 @@ xmlns:android="http://schemas.android.com/apk/res/android"
 
         <header-file src="src/ios/FirebaseAnalyticsPlugin.h" />
         <source-file src="src/ios/FirebaseAnalyticsPlugin.m" />
-
-        <podspec>
+               
+           <framework src="Firebase/Analytics" type="podspec" spec="~> 6.7" />
+        <!--podspec>
             <config>
                 <source url="https://github.com/CocoaPods/Specs.git"/>
             </config>
             <pods>
                 <pod name="Firebase/Analytics" />
-                <!--pod name="Firebase/Core" spec="~> 6.7" /-->
             </pods>
             <info>
             Pods Successfully loaded
             </info>
-        </podspec>
+        </podspec-->
 
+                <!--pod name="Firebase/Core" spec="~> 6.7" /-->
     </platform>
 
     <platform name="android">
