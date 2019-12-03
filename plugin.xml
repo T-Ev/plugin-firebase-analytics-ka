@@ -30,9 +30,16 @@ xmlns:android="http://schemas.android.com/apk/res/android"
 
         <header-file src="src/ios/FirebaseAnalyticsPlugin.h" />
         <source-file src="src/ios/FirebaseAnalyticsPlugin.m" />
-               
+        <framework custom="true" src="src/ios/Firebase/Analytics/GoogleAppMeasurement.framework" />
+		<framework custom="true" src="src/ios/Firebase/Analytics/MeasurementNanoPB.framework" />
+		<framework custom="true" src="src/ios/Firebase/Analytics/FirebaseCore.framework" />
+		<framework custom="true" src="src/ios/Firebase/Analytics/FirebaseAnalytics.framework" />
+		<framework custom="true" src="src/ios/Firebase/Analytics/GoogleUtilities.framework" />
+		<framework custom="true" src="src/ios/Firebase/Analytics/nanopb.framework" />
+		<framework custom="true" src="src/ios/Firebase/Analytics/FirebaseInstanceID.framework" />
+		<framework custom="true" src="src/ios/Firebase/Analytics/FirebaseCoreDiagnostics.framework" />
            <!--framework src="Firebase/Analytics" type="podspec" spec="~> 6.7" /-->
-        <podspec>
+        <!--podspec>
             <config>
                 <source url="https://github.com/CocoaPods/Specs.git"/>
             </config>
@@ -42,7 +49,7 @@ xmlns:android="http://schemas.android.com/apk/res/android"
             <info>
             Pods Successfully loaded
             </info>
-        </podspec>
+        </podspec-->
 
                 <!--pod name="Firebase/Core" spec="~> 6.7" /-->
     </platform>
